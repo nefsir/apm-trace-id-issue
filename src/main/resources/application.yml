@@ -1,0 +1,21 @@
+spring:
+  reactor:
+    context-propagation: auto
+  webflux:
+    base-path: /
+
+management:
+  endpoints:
+    web:
+      base-path: /
+      exposure:
+        include: '*'
+    enabled-by-default: true
+  tracing:
+    enabled: true
+    sampling:
+      probability: 1.0
+
+logging:
+  pattern:
+    level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"
